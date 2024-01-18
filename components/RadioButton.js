@@ -1,4 +1,4 @@
-export default function RadioButton({ label, value }) {
+export default function RadioButton({ label, value, onClick }) {
     return (
         <button
             type="button"
@@ -8,6 +8,7 @@ export default function RadioButton({ label, value }) {
             className="radio-group__button"
             data-label={label}
             data-value={value}
+            onClick = {onClick}
         >
             {label}
         </button>

@@ -34,7 +34,7 @@ export default function Home() {
                 labels: (new Array(coinData.length).fill("")),
 
                 datasets: [{
-                    label: "Value",
+                    label: "Price",
                     pointColor: "rgba(0, 0, 0, 0)",
                     pointStrokeColor: "rgba(0, 0, 0, 0)",
                     borderColor: "#228C22",

@@ -1,13 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import Head from "next/head";
 import Header from "@components/Header";
-import Footer from "@components/Footer";
 import RadioButton from "@components/RadioButton";
 import RadioGroup from "@components/RadioGroup";
 import LineChart from "@components/LineChart";
 import getCoinData from "../utils/getCoinData.js";
 import chartOptionsConfig from "../utils/chartOptionsConfig.js";
-import { Button } from "react-bootstrap";
 
 export default function Home() {
     const [coinState, setCoinState] = useState({

@@ -1,15 +1,24 @@
 export default {
     interaction: {
         intersect: false,
-        mode: 'index',
+        responsive: true,
+        mode: "index",
     },
-    plugins: {
-        title: {
-            display: true,
-            text: (ctx) => {
-                const { axis = 'xy', intersect, mode } = ctx.chart.options.interaction;
-                return 'Mode: ' + mode + ', axis: ' + axis + ', intersect: ' + intersect;
+
+    scales: {
+        x: {
+            grid: {
+                display: false
             }
         },
+        y: {
+            grid: {
+                display: false
+            },
+
+            ticks: {
+                callback: value => "$" + value
+            }
+        }
     }
 };

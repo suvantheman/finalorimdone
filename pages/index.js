@@ -38,12 +38,6 @@ export default function Home() {
 
                 datasets: [{
                     label: "Value",
-                    interaction: {
-                        intersect: false,
-                        includeInvisible: true,
-                        mode: 'nearest',
-                        axis: 'x',
-                    },
                     pointColor: "rgba(0, 0, 0, 0)",
                     pointStrokeColor: "rgba(0, 0, 0, 0)",
                     borderColor: "#228C22",

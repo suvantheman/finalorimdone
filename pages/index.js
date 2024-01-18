@@ -5,24 +5,18 @@ import Footer from "@components/Footer";
 import RadioButton from "@components/RadioButton";
 import RadioGroup from "@components/RadioGroup";
 import LineChart from "@components/LineChart";
-import getPoints from "../utils/graph.js";
+import getCoinData from "../utils/getCoinData.js";
+import chartOptionsConfig from "../utils/chartOptionsConfig.js";
 import { Button } from "react-bootstrap";
-
-const getCSVData = async (coin) => {
-    const response = await fetch(`../assets/stock-data/${coin}.txt`);
-    const data = await response.text();
-    const points = getPoints(data);
-
-    return points;
-};
 
 export default function Home() {
     const [coinState, setCoinState] = useState({
         labels: "Loading",
-    
+
         datasets: [{
             backgroundColor: '#9BD0F5',
-            borderColor: '#36A2EB',
+            borderColor: '#228C22',
+            borderWidth: 3,
             label: "Value",
             data: [0]
         }]
@@ -37,16 +31,29 @@ export default function Home() {
 
     useEffect(() => {
         const asyncWrapper = async () => {
-            const allCoinData = await getCSVData("BTC"); 
-            const coinData = allCoinData.slice(allCoinData.length - range, allCoinData.length);
-            
+            const coinData = await getCoinData("BTC", range);
+
             setCoinState({
-                labels: coinData.map((line) => line.Date),
-    
+                labels: (new Array(coinData.length).fill("")),
+
                 datasets: [{
-                    backgroundColor: '#9BD0F5',
-                    borderColor: '#36A2EB',
                     label: "Value",
+                    pointColor: "rgba(0, 0, 0, 0)",
+                    pointStrokeColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#228C22",
+                    fill: "start",
+                    pointRadius: 0,
+
+                    backgroundColor: canvas => {
+                        const context = canvas.chart.ctx;
+
+                        const gradient = context.createLinearGradient(0, 0, 0, context.canvas.clientWidth);
+                        gradient.addColorStop(0, "rgba(0, 250, 50, 0.3)");
+                        gradient.addColorStop(0.43, "rgba(0, 174, 50, 0)");
+
+                        return gradient;
+                    },
+
                     data: coinData.map((line) => line.Close),
                 }]
             });
@@ -55,23 +62,23 @@ export default function Home() {
         asyncWrapper();
     }, [range]);
 
-    
     return (
         <>
             <div>
                 <Header title="Edu-Crypto" />
 
                 <h3>Bitcoin Price Chart (BTC)</h3>
+
                 <RadioGroup label="time" checkedValue="24h">
-                    <RadioButton onClick = {changeRange} label="24h" value="2" />
-                    <RadioButton onClick = {changeRange} label="7d" value="7" />
-                    <RadioButton onClick = {changeRange} label="1m" value="30" />
-                    <RadioButton onClick = {changeRange} label="1y" value="365" />
+                    <RadioButton onClick={changeRange} label="24h" value="2" />
+                    <RadioButton onClick={changeRange} label="7d" value="7" />
+                    <RadioButton onClick={changeRange} label="1m" value="30" />
+                    <RadioButton onClick={changeRange} label="1y" value="365" />
                 </RadioGroup>
 
                 <div className="Application">
                     <div style={{ width: 1200 }}>
-                        <LineChart chartData={coinState} /> 
+                        <LineChart chartData={coinState} chartOptions={chartOptionsConfig} />
                     </div>
                 </div>
             </div>

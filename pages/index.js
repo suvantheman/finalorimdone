@@ -1,13 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import Head from "next/head";
 import Header from "@components/Header";
-import Footer from "@components/Footer";
 import RadioButton from "@components/RadioButton";
 import RadioGroup from "@components/RadioGroup";
 import LineChart from "@components/LineChart";
 import getCoinData from "../utils/getCoinData.js";
 import chartOptionsConfig from "../utils/chartOptionsConfig.js";
-import { Button } from "react-bootstrap";
 
 export default function Home() {
     const [coinState, setCoinState] = useState({
@@ -37,7 +34,7 @@ export default function Home() {
                 labels: (new Array(coinData.length).fill("")),
 
                 datasets: [{
-                    label: "Value",
+                    label: "Price",
                     pointColor: "rgba(0, 0, 0, 0)",
                     pointStrokeColor: "rgba(0, 0, 0, 0)",
                     borderColor: "#228C22",

@@ -13,11 +13,16 @@ export default {
         },
         y: {
             grid: {
-                display: false
+                display: true,
+                color: '#262626',
             },
 
             ticks: {
-                callback: value => "$" + value
+                callback: value => "$" + value,
+                beginAtZero: true,
+                color: 'white',
+                fontSize: 12,
+
             }
         }
     }

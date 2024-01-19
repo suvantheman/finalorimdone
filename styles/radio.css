@@ -9,17 +9,18 @@
 button {
     padding: 0.2rem 1.25rem;
     font-size: 0.75rem;
+    font-weight: 500;
     background-color: #353636;
-    border: 1px solid silver;
+    border: 0.5px solid gray;
     color: white;
 }
 
 button:nth-child(1) {
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 7px 0px 0px 7px;
 }
 
 button:nth-last-child(1) {
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 7px 7px 0px;
 }
 
 button[aria-checked="true"] {

@@ -2,7 +2,6 @@ export default {
     borderWidth: 3,
     borderColor: "#228C22",
 
-   
     pointColor: "rgba(0, 0, 0, 0)",
     pointStrokeColor: "rgba(0, 0, 0, 0)",
     color: "#ffffff",

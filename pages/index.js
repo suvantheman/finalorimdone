@@ -11,6 +11,7 @@ import chartConfig from "../utils/chartConfig.js";
 export default function Home() {
     const [coinState, setCoinState] = useState({
         labels: "Loading",
+        backgroundColor: "#9BD0F5",
         datasets: [{}]
     });
 

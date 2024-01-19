@@ -7,13 +7,13 @@ const processCSV = csv => {
         const data = {};
         const values = line.split(",");
 
-        for (let i = 0; i < values.length; i++)  
+        for (let i = 0; i < values.length; i++)
             data[headers[i]] = values[i];
 
         lines.push(data);
     });
 
-    return lines;  
+    return lines;
 };
 
 const getCSVData = async csv => {
@@ -26,7 +26,7 @@ const getCSVData = async csv => {
 
 const getCoinData = async (coin, start) => {
     const data = await getCSVData(coin);
-    const lines = data.length; 
+    const lines = data.length;
 
     return data.slice(lines - start, lines);
 }

@@ -7,10 +7,12 @@ import LineChart from "@components/LineChart";
 import getCoinData from "../utils/getCoinData.js";
 import chartOptionsConfig from "../utils/chartOptionsConfig.js";
 import chartConfig from "../utils/chartConfig.js";
+import { setMouse } from "../utils/chartMouse.js";
 
 export default function Home() {
     const [coinState, setCoinState] = useState({
         labels: "Loading",
+        backgroundColor: "#9BD0F5",
         datasets: [{}]
     });
 
@@ -20,6 +22,7 @@ export default function Home() {
         const value = event.target.getAttribute("data-value");
         setRange(value);
     };
+
 
     useEffect(() => {
         const asyncWrapper = async () => {
@@ -69,7 +72,7 @@ export default function Home() {
                 <RadioButton onClick={changeRange} label="1y" value="365" />
             </RadioGroup>
 
-            <div>
+            <div onMouseMove={setMouse}>
                 <LineChart chartData={coinState} chartOptions={chartOptionsConfig} />
             </div>
 

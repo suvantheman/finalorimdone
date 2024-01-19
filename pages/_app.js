@@ -1,6 +1,5 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "@styles/globals.css";
-import "@styles/radio.css";
+import "/public/styles/globals.css";
+import "/public/styles/radio.css";
 
 import { useState } from "react";
 

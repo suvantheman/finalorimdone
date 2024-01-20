@@ -5,6 +5,12 @@ export default {
         mode: "index",
     },
 
+    plugins: {
+        legend: {
+            display: false
+        }
+    },
+
     scales: {
         x: {
             grid: {

@@ -32,7 +32,7 @@ const plugins = [{
         // Draw horizontal line
         const leftX = chart.scales.x.left;
         const rightX = chart.scales.x.right;
-        drawLine(ctx, leftX, rightX, mouseY - 170, mouseY - 170);
+        drawLine(ctx, leftX, rightX, mouseY - 205, mouseY - 205);
     },
 }];
 

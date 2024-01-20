@@ -1,18 +1,27 @@
 * {
-    --selected-color: #2bbd23;
+    --selected-color: #ffffff;
+    /* for dark mode*/
+    --primary: #20222e;
+    --secondary: #323546;
+    --font-color: #ffffff ;
+    --bg-color: #20222e ;
+    
+
 }
 
 .radio-group__button-group {
     display: flex;
+    align-items: center;
 }
 
 button {
     padding: 0.2rem 1.25rem;
     font-size: 0.75rem;
-    font-weight: 500;
-    background-color: #353636;
-    border: 0.5px solid gray;
-    color: white;
+    font-weight: 850;
+    background-color: var(--secondary);
+    border: 3.0px solid var(--secondary);
+    color: #c9c6c6;
+    text-transform: uppercase;
 }
 
 button:nth-child(1) {
@@ -24,10 +33,10 @@ button:nth-last-child(1) {
 }
 
 button[aria-checked="true"] {
-    background-color: rgb(68, 68, 68);
+    background-color: #20222e;
     color: var(--selected-color);
 }
 
 button:hover {
-    background-color: rgb(50, 50, 50);
+    background-color: #20222e;
 }

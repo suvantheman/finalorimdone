@@ -24,11 +24,11 @@ const getCSVData = async csv => {
     return points;
 };
 
-const getCoinData = async (coin, start) => {
+const getCoinData = async (coin, start, end) => {
     const data = await getCSVData(coin);
     const lines = data.length;
 
-    return data.slice(lines - start, lines);
+    return data.slice(lines - start, lines - end);
 }
 
 export default getCoinData;

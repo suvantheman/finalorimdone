@@ -16,22 +16,40 @@ export default function Home() {
         datasets: [{}]
     });
 
-    const [range, setRange] = useState(2);
+    const [baseRange, setBaseRange] = useState(2);
+    const [startRange, setStartRange] = useState(2);
+    const [endRange, setEndRange] = useState(0);
 
-    const changeRange = event => {
+    const changeBaseRange = event => {
         const value = event.target.getAttribute("data-value");
-        setRange(value);
+
+        setBaseRange(value);
+        setStartRange(value);
+        setEndRange(0);
     };
 
+    const incrementRange = event => {
+        const delta = event.target.getAttribute("value");
+        const distances = {
+            365: 30,
+            30: 7,
+            7: 1,
+            2: 1
+        }
+
+        const distance = distances[baseRange];
+        setStartRange(Math.max(startRange - (distance * delta), baseRange))
+        setEndRange(Math.max(endRange - (distance * delta), baseRange - startRange));
+    };
 
     useEffect(() => {
         const asyncWrapper = async () => {
-            const coinData = await getCoinData("BTC", range);
+            const coinData = await getCoinData("BTC", startRange, endRange);
             const prices = coinData.map((line) => line.Close);
             const positive = (prices[prices.length - 1] - prices[0]) >= 0;
 
             setCoinState({
-                labels: new Array(coinData.length).fill(""),
+                labels: coinData.map(line => ""),
 
                 datasets: [{
                     label: "Price",
@@ -57,29 +75,39 @@ export default function Home() {
         };
 
         asyncWrapper();
-    }, [range]);
+    }, [startRange, endRange]);
 
     return (
         <>
             <Header title="Edu-Crypto" />
 
-            <h3>Bitcoin Price Chart (BTC)</h3>
+            <div className="container">
+                <h3>Bitcoin Price Chart (BTC)</h3>
 
-            <RadioGroup checkedValue="24h">
-                <RadioButton onClick={changeRange} label="24h" value="2" />
-                <RadioButton onClick={changeRange} label="7d" value="7" />
-                <RadioButton onClick={changeRange} label="1m" value="30" />
-                <RadioButton onClick={changeRange} label="1y" value="365" />
-            </RadioGroup>
+                <div className="controls">
+                    <RadioGroup checkedValue="24h">
+                        <RadioButton onClick={changeBaseRange} label="24h" value="2" />
+                        <RadioButton onClick={changeBaseRange} label="7d" value="7" />
+                        <RadioButton onClick={changeBaseRange} label="1m" value="30" />
+                        <RadioButton onClick={changeBaseRange} label="1y" value="365" />
+                    </RadioGroup>
 
-            <div onMouseMove={setMouse}>
-                <LineChart chartData={coinState} chartOptions={chartOptionsConfig} />
+                    <div className="prev-next-buttons">
+                        <button onClick={incrementRange} value="-1">Prev</button>
+                        <button onClick={incrementRange} value="1">Next</button>
+                    </div>
+                </div>
+
+                <div className="chart" onMouseMove={setMouse}>
+                    <LineChart chartData={coinState} chartOptions={chartOptionsConfig} />
+
+
+                    <Table data={{
+                        headers: ["24h", "7d", "1m", "1y"],
+                        rows: [["0.4%", "-1.4%", "-10.7%", "-7.3%"]]
+                    }} />
+                </div>
             </div>
-
-            <Table data={{
-                headers: ["24h", "7d", "1m", "1y"],
-                rows: [["0.4%", "-1.4%", "-10.7%", "-7.3%"]]
-            }} />
         </>
     )
 };

@@ -1,3 +1,3 @@
 
 
-handleClick = {handleClick}
+handleClick = { handleClick }

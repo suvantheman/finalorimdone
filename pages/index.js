@@ -95,7 +95,7 @@ export default function Home() {
             <div className="container">
 
                 <div className="left-UI">
-                    
+
 
                 </div>
 
@@ -133,19 +133,23 @@ export default function Home() {
 
 
                 <div className="right-UI">
-                    
+
 
 
                     <div className="bar-chart">
-                        <BarChart chartData={coinState} chartOptions={chartOptionsConfig} />
-                    </div>
-                    
-                    <div className="pie-chart">
-                    <h2> Your Portfolio:</h2>
-                    
-                    <PieChart chartData={dataPieState} chartOptions={chartOptionsConfigPie} />
 
-                    {/* Right side UI */}
+                        <BarChart chartData={coinState} chartOptions={chartOptionsConfig} />
+
+
+
+                    </div>
+
+                    <div className="pie-chart">
+                        <h2> Your Portfolio:</h2>
+
+                        <PieChart chartData={dataPieState} chartOptions={chartOptionsConfigPie} />
+
+                        {/* Right side UI */}
                     </div>
                 </div>
             </div>

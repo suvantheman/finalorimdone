@@ -21,7 +21,7 @@ export default {
             grid: {
                 display: true,
                 color: "#262626",
-                
+
             },
             position: 'right',
             ticks: {
@@ -31,7 +31,7 @@ export default {
                 fontSize: 12,
             }
         }
-    },   maintainAspectRatio: false
+    }, maintainAspectRatio: false
 };
 
 

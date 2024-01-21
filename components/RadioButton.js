@@ -8,7 +8,7 @@ export default function RadioButton({ label, value, onClick }) {
             className="radio-group__button"
             data-label={label}
             data-value={value}
-            onClick = {onClick}
+            onClick={onClick}
         >
             {label}
         </button>

@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Biryani:wght@600&display=swap');
 
-html, body {
+html,
+body {
     font-family: 'Segoe UI';
 
     background-color: #0f131a;
     color: white;
-    
+
     margin: 10px;
     overflow: hidden;
 }
@@ -26,13 +27,18 @@ main {
 .container {
     height: 100vh;
     width: 100vw;
+    display: flex;
+    justify-content: space-around;
+        margin: auto;
+        width: 50%;
+        padding: 10px;
 }
 
-.chart{
-    height: 50%;
-    width: 50%;
+.chart {
+    height: 30%;
     display: flex;
-    align-items: center;
+    align-items: left;
+    
     flex-direction: column;
 }
 
@@ -42,8 +48,9 @@ main {
 }
 
 table {
-    margin-top: 10px;
+    margin-top: 35px;
     border-radius: 5px;
+    height: 10%;
     border-collapse: separate !important;
     text-align: center;
     background-color: var(--primary);
@@ -54,45 +61,123 @@ th {
     background-color: var(--secondary);
 }
 
-table, td, th { 
+table,
+td,
+th {
     border: 1px solid var(--primary);
 }
 
-thead td, th{ 
+thead td,
+th {
     border-top: 0px;
 }
 
-tbody td, th{ 
+tbody td,
+th {
     border-bottom: 0px;
     font-weight: 550;
 }
 
-td:nth-child(1), th:nth-child(1) { 
+td:nth-child(1),
+th:nth-child(1) {
     border-left: 0px;
 }
 
-td:nth-last-child(1), th:nth-last-child(1) { 
+td:nth-last-child(1),
+th:nth-last-child(1) {
     border-right: 0px;
 }
 
-td, th {
+td,
+th {
     padding: 6px 20px;
 }
 
-.header { 
+.header {
     display: flex;
     align-items: center;
 }
 
-h3 { 
+h3 {
     font-size: 2em;
     margin: 0px;
 }
 
-.controls { 
-    width: 50%;
+.controls {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     margin-bottom: 25px;
 }
+
+.undergraph {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+
+.right-UI {
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--primary);
+    
+        border-radius: 25px;
+        
+        padding: 20px;
+        
+        margin-left: 90px;
+      }
+
+
+.right-UI {
+    flex-basis: 50%;
+    min-width: 40%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    height: 90vh;
+
+    
+}
+
+.center-UI {
+    display: flex;
+    flex-basis: 50%;
+    min-width: 80%;
+    flex-direction: column;
+    margin-top: 10%;
+}
+
+
+.left-UI {
+    display: flex;
+    align-items: left;
+    background-color: var(--primary);
+    
+        border-radius: 25px;
+        
+        padding: 20px;
+        min-width: 40%;
+        height: 90vh;
+        margin-right: 90px;
+      }
+
+
+
+      .pie-chart {
+        height: 50%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+      }
+
+      .bar-chart {
+
+        align-items: center;
+
+      }

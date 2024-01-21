@@ -32,7 +32,7 @@ const plugins = [{
         // Draw horizontal line
         const leftX = chart.scales.x.left;
         const rightX = chart.scales.x.right;
-        drawLine(ctx, leftX, rightX, mouseY - 205, mouseY - 205);
+        drawLine(ctx, leftX, rightX, mouseY - 247, mouseY - 247);
     },
 }];
 
@@ -41,3 +41,4 @@ function LineChart({ chartData, chartOptions }) {
 }
 
 export default LineChart;
+

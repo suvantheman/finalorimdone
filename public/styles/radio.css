@@ -39,4 +39,5 @@ button[aria-checked="true"] {
 
 button:hover {
     background-color: #20222e;
+    cursor: pointer;
 }

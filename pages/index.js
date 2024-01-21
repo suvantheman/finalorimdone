@@ -8,12 +8,24 @@ import getCoinData from "../utils/getCoinData.js";
 import chartOptionsConfig from "../utils/chartOptionsConfig.js";
 import chartConfig from "../utils/chartConfig.js";
 import { setMouse } from "../utils/chartMouse.js";
+import BarChart from "@components/BarChart.js";
+import PieChart from "@components/PieChart.js";
+import chartOptionsConfigPie from "utils/chartOptionsConfigPie.js";
 
 export default function Home() {
     const [coinState, setCoinState] = useState({
-        labels: "Loading",
+        labels: ["Loading"],
         backgroundColor: "#9BD0F5",
         datasets: [{}]
+    });
+
+    const [dataPieState, setDataPieState] = useState({
+        labels: ['1 BTC', '5 DOT', '10 ETH'],
+        backgroundColor: "#9BD0F5",
+        datasets: [{
+            label: "test",
+            data: [1, 3, 5]
+        }]
     });
 
     const [baseRange, setBaseRange] = useState(2);
@@ -50,7 +62,6 @@ export default function Home() {
 
             setCoinState({
                 labels: coinData.map(line => ""),
-
                 datasets: [{
                     label: "Price",
                     pointColor: chartConfig.pointColor,
@@ -79,35 +90,67 @@ export default function Home() {
 
     return (
         <>
-            <Header title="Edu-Crypto" />
+            {/* <Header title="Edu-Crypto" />  */}
 
             <div className="container">
-                <h3>Bitcoin Price Chart (BTC)</h3>
 
-                <div className="controls">
-                    <RadioGroup checkedValue="24h">
-                        <RadioButton onClick={changeBaseRange} label="24h" value="2" />
-                        <RadioButton onClick={changeBaseRange} label="7d" value="7" />
-                        <RadioButton onClick={changeBaseRange} label="1m" value="30" />
-                        <RadioButton onClick={changeBaseRange} label="1y" value="365" />
-                    </RadioGroup>
+                <div className="left-UI">
+                    
 
-                    <div className="prev-next-buttons">
-                        <button onClick={incrementRange} value="-1">Prev</button>
-                        <button onClick={incrementRange} value="1">Next</button>
+                </div>
+
+
+                <div className="center-UI">
+                    <h3>Bitcoin Price Chart (BTC)</h3>
+
+                    <div className="controls">
+                        <RadioGroup checkedValue="24h">
+                            <RadioButton onClick={changeBaseRange} label="24h" value="2" />
+                            <RadioButton onClick={changeBaseRange} label="7d" value="7" />
+                            <RadioButton onClick={changeBaseRange} label="1m" value="30" />
+                            <RadioButton onClick={changeBaseRange} label="1y" value="365" />
+                        </RadioGroup>
+
+                        <div className="prev-next-buttons">
+                            <button onClick={incrementRange} value="-1">Prev</button>
+                            <button onClick={incrementRange} value="1">Next</button>
+                        </div>
+                    </div>
+
+                    <div className="chart" onMouseMove={setMouse}>
+                        <LineChart chartData={coinState} chartOptions={chartOptionsConfig} />
+
+                    </div>
+                    <div className="undergraph">
+                        <Table data={{
+                            headers: ["24h", "7d", "1m", "1y"],
+                            rows: [["0.4%", "-1.4%", "-10.7%", "-7.3%"]]
+
+                        }} />
+
                     </div>
                 </div>
 
-                <div className="chart" onMouseMove={setMouse}>
-                    <LineChart chartData={coinState} chartOptions={chartOptionsConfig} />
+
+                <div className="right-UI">
+                    
 
 
-                    <Table data={{
-                        headers: ["24h", "7d", "1m", "1y"],
-                        rows: [["0.4%", "-1.4%", "-10.7%", "-7.3%"]]
-                    }} />
+                    <div className="bar-chart">
+                        <BarChart chartData={coinState} chartOptions={chartOptionsConfig} />
+                    </div>
+                    
+                    <div className="pie-chart">
+                    <h2> Your Portfolio:</h2>
+                    
+                    <PieChart chartData={dataPieState} chartOptions={chartOptionsConfigPie} />
+
+                    {/* Right side UI */}
+                    </div>
                 </div>
             </div>
+
+
         </>
     )
 };

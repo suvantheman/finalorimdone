@@ -4,8 +4,8 @@ const mouse = {
 }
 
 const getMouse = () => mouse;
-const setMouse = event => { 
-    mouse.mouseX = event.clientX; 
+const setMouse = event => {
+    mouse.mouseX = event.clientX;
     mouse.mouseY = event.clientY;
 };
 

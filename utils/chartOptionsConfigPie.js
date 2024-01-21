@@ -14,22 +14,29 @@ export default {
     scales: {
         x: {
             ticks: {
-                display: false, },
+                display: false,
+            },
             grid: {
                 display: false
             }
         },
         y: {
             ticks: {
-                display: false, },
+                display: false,
+            },
             grid: {
                 display: false,
-                
-                
+
+
             },
-            
-            
+            display: false,
+            position: 'right',
+            ticks: {
+                display: false,
+                color: "white",
+            }
+
         }
-    },   maintainAspectRatio: false
+    }, maintainAspectRatio: false
 };
 

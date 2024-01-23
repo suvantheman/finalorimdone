@@ -28,15 +28,13 @@ main {
     height: 100vh;
     width: 100vw;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: auto;
-    width: 50%;
     padding: 10px;
 }
 
 .chart {
     height: 40%;
-
     display: flex;
     align-items: left;
 
@@ -130,13 +128,12 @@ h3 {
 
     padding: 20px;
 
-    margin-left: 90px;
-}
+    
+    margin-right: 5.5%;
+    
 
-
-.right-UI {
-    flex-basis: 50%;
-    min-width: 40%;
+    
+    min-width: 20%;
     padding-top: 100px;
     padding-bottom: 100px;
     height: 90vh;
@@ -144,8 +141,9 @@ h3 {
 
 .center-UI {
     display: flex;
-    flex-basis: 50%;
-    min-width: 80%;
+    width: 30%;
+    flex-basis: 40%;
+    
     flex-direction: column;
     margin-top: 10%;
 }
@@ -159,9 +157,11 @@ h3 {
     border-radius: 25px;
 
     padding: 20px;
-    min-width: 40%;
+    min-width: 20%;
     height: 90vh;
-    margin-right: 90px;
+    
+    margin-left: 3.25%;
+    
 }
 
 
@@ -170,9 +170,39 @@ h3 {
 .bar-chart {
     display: flex;
     border-radius: 25px;
-    margin-top: -25%;
+    margin-top: -21%;
     align-items: center;
     background-color: #0f131a;
-    padding: 2dvh;
+    padding: 1dvh;
+    height: 25% ;
 
+}
+
+.PieChart {
+
+    display: flex;
+    border-radius: 25px;
+    margin-top: 0%;
+    flex-direction:row;
+    background-color: #0f131a;
+    padding: 0.5dvh;
+    
+    
+
+
+}
+
+.myportfolio {
+
+
+    margin-top: 35px;
+}
+
+.CoinButtons button {
+    display: flex;
+    background-color: var(--primary);
+    border-radius: 25px;
+    flex-direction:column;
+    
+    
 }

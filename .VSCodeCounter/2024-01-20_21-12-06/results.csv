@@ -1,0 +1,29 @@
+"filename", "language", "JavaScript", "JSON with Comments", "JSON", "Markdown", "XML", "CSS", "comment", "blank", "total"
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\README.md", "Markdown", 0, 0, 0, 59, 0, 0, 0, 32, 91
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\components\BarChart.js", "JavaScript", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\components\Controls.js", "JavaScript", 16, 0, 0, 0, 0, 0, 0, 2, 18
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\components\LineChart.js", "JavaScript", 34, 0, 0, 0, 0, 0, 2, 8, 44
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\components\PieChart.js", "JavaScript", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\components\RadioButton.js", "JavaScript", 16, 0, 0, 0, 0, 0, 0, 0, 16
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\components\RadioGroup.js", "JavaScript", 40, 0, 0, 0, 0, 0, 3, 5, 48
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\components\Table.js", "JavaScript", 23, 0, 0, 0, 0, 0, 0, 1, 24
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\cypress.config.js", "JavaScript", 7, 0, 0, 0, 0, 0, 0, 2, 9
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\cypress\e2e\basic.cy.js", "JavaScript", 16, 0, 0, 0, 0, 0, 0, 2, 18
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\jsconfig.json", "JSON with Comments", 0, 13, 0, 0, 0, 0, 0, 0, 13
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\package-lock.json", "JSON", 0, 0, 2550, 0, 0, 0, 0, 1, 2551
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\package.json", "JSON", 0, 0, 21, 0, 0, 0, 0, 0, 21
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\pages\_app.js", "JavaScript", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\pages\index.js", "JavaScript", 106, 0, 0, 0, 0, 0, 0, 22, 128
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\public\logo-netlify.svg", "XML", 0, 0, 0, 0, 16, 0, 0, 1, 17
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\public\styles\globals.css", "CSS", 0, 0, 0, 0, 0, 150, 0, 40, 190
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\public\styles\radio.css", "CSS", 0, 0, 0, 0, 0, 34, 1, 6, 41
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\renovate.json", "JSON", 0, 0, 6, 0, 0, 0, 0, 0, 6
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\utils\chartMouse.js", "JavaScript", 10, 0, 0, 0, 0, 0, 0, 2, 12
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\utils\configs\baseRanges.js", "JavaScript", 6, 0, 0, 0, 0, 0, 0, 0, 6
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\utils\configs\chart.js", "JavaScript", 21, 0, 0, 0, 0, 0, 2, 4, 27
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\utils\configs\chartOptions.js", "JavaScript", 33, 0, 0, 0, 0, 0, 0, 5, 38
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\utils\configs\pieOptions.js", "JavaScript", 37, 0, 0, 0, 0, 0, 0, 6, 43
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\utils\getCoinData.js", "JavaScript", 24, 0, 0, 0, 0, 0, 0, 10, 34
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\utils\makeChart.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\Crazy\Documents\GitHub\finalorimdone\utils\testpiedata.js", "JavaScript", 9, 0, 0, 0, 0, 0, 0, 2, 11
+"Total", "-", 419, 13, 2577, 59, 16, 184, 8, 161, 3437

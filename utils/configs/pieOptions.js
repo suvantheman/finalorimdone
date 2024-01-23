@@ -13,25 +13,31 @@ export default {
 
     scales: {
         x: {
+            ticks: {
+                display: false,
+            },
+
             grid: {
                 display: false
             }
         },
         y: {
-            grid: {
-                display: true,
-                color: "#262626",
-
+            ticks: {
+                display: false,
             },
+
+            grid: {
+                display: false,
+            },
+
+            display: false,
             position: 'right',
             ticks: {
-                callback: value => "$" + value,
-                beginAtZero: true,
+                display: false,
                 color: "white",
-                fontSize: 12,
             }
         }
-    }, maintainAspectRatio: false
+    },
+
+    maintainAspectRatio: false
 };
-
-

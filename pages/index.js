@@ -13,6 +13,7 @@ import CoinButtons from "@components/coinButtons.js";
 
 export default function Home() {
     const [coinName, setCoinName] = useState("btc");
+    const [coinDisplayName, setCoinDisplayName] = useState("Bitcoin Price Chart (BTC)");
 
     const [coinState, setCoinState] = useState({
         labels: ["Loading"],
@@ -34,9 +35,11 @@ export default function Home() {
     const [endRange, setEndRange] = useState(0);
 
     const changeCoinName = event => {
-        const value = event.target.getAttribute("value");
-
+        const button = event.target; 
+        const value = button.getAttribute("value");
+        
         setCoinName(value);
+        setCoinDisplayName(`${button.textContent} Price Chart (${value.toUpperCase()})`);
     }
 
     const changeBaseRange = event => {
@@ -71,7 +74,7 @@ export default function Home() {
             const isPositive = (prices[prices.length - 1] - prices[0]) >= 0;
 
             setCoinState(buildChart(prices, isPositive));
-
+            
             lastCoinName = coinName;
             lastCoinData = coinData;
         };
@@ -92,7 +95,7 @@ export default function Home() {
                 </div>
 
                 <div className="center-UI">
-                    <h3>Bitcoin Price Chart (BTC)</h3>
+                    <h3>{coinDisplayName}</h3>
 
                     <Controls changeBaseRange={changeBaseRange} incrementRange={incrementRange} baseRanges={baseRanges} />
 

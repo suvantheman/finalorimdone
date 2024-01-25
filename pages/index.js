@@ -64,7 +64,7 @@ export default function Home() {
     var lastCoinName;
     var lastCoinData;
 
-    useEffect((l) => {
+    useEffect(() => {
         const asyncWrapper = async () => {
             const coinData = (coinName == lastCoinName) ? lastCoinData : await getCoinData(coinName, startRange, endRange);
             const prices = coinData.map(line => parseInt(line.Close).toFixed(3));

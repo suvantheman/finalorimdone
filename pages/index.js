@@ -92,8 +92,9 @@ export default function Home() {
                 </div>
 
                 <div className="center-UI">
+                    
                     <h3>Bitcoin Price Chart (BTC)</h3>
-
+                    
                     <Controls changeBaseRange={changeBaseRange} incrementRange={incrementRange} baseRanges={baseRanges} />
 
                     <div className="chart" onMouseMove={setMouse}>

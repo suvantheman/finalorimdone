@@ -69,11 +69,16 @@ export default function Home() {
         <>
             <div className="container">
                 <div className="left-UI">
-                
-                <CoinButtons changeBaseRange={changeBaseRange} incrementRange={incrementRange} baseRanges={baseRanges} />
+                    <div className="leftNav">
 
-                
+                        <img src={"../public/assets/craniumLogo.png"} />
+
+                    </div>
+                    <div className="coinleftnav">
+                    <CoinButtons changeBaseRange={changeBaseRange} incrementRange={incrementRange} baseRanges={baseRanges} />
+                    </div>
                 </div>
+
                 <div className="center-UI">
                     <h3>Bitcoin Price Chart (BTC)</h3>
 
@@ -94,38 +99,40 @@ export default function Home() {
 
                 <div className="right-UI"><div className="bar-chart">
                     <BarChart chartData={coinState} chartOptions={chartOptionsConfig} />
-
-            
                 </div>
-                    
-
-                        <h1 className="myportfolio">  My Portfolio:</h1>
-
-
-                    
                 
-                <div className="PieChart">
-                    <PieChart
-                        data={[
-                            { title: 'One', value: 10, color: '#E38627' },
-                            { title: 'Two', value: 15, color: '#C13C37' },
-                            { title: 'Three', value: 20, color: '#6A2135' },
+                    <h1 className="myportfolio">  My Portfolio:</h1>
 
-                        ]}
-                        lineWidth={15}
-                        radius={30}
-                        animate
-                        reveal={100}
+                  
+
+                    <div className="PieChart">
+                        <PieChart
+                            data={[
+                                { title: 'One', value: 10, color: '#E38627' },
+                                { title: 'Two', value: 15, color: '#C13C37' },
+                                { title: 'Three', value: 20, color: '#6A2135' },
+
+                            ]}
+                            lineWidth={15}
+                            radius={30}
+                            animate
+                            reveal={100}
 
 
 
 
-                        valueFormatter={(value, percentage) => `${value} (${percentage}%)`}></PieChart>
+                            valueFormatter={(value, percentage) => `${value} (${percentage}%)`}></PieChart>
                     </div>
+                    <div className="myinvestments">
+                    <h3>Investment 1 </h3>
+                    <h3>Investment 2 </h3>
+                    <h3>Investment 3 </h3>
+                    <h3>Investment 4 </h3>
+</div>
 
 
-            </div>
-        </div >
+                </div>
+            </div >
         </>
     )
 };

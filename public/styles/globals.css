@@ -34,7 +34,7 @@ main {
 }
 
 .chart {
-    height: 40%;
+    height: 50%;
     display: flex;
     align-items: left;
 
@@ -128,12 +128,12 @@ h3 {
 
     padding: 20px;
 
-    
-    margin-right: 5.5%;
+    height:94vh;
+    margin-right: 3%;
     
 
     
-    min-width: 20%;
+    min-width: 10%;
     padding-top: 100px;
     padding-bottom: 100px;
     height: 90vh;
@@ -141,26 +141,26 @@ h3 {
 
 .center-UI {
     display: flex;
-    width: 30%;
-    flex-basis: 40%;
+    width: 50%;
+    flex-basis: 50%;
     
     flex-direction: column;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 
 .left-UI {
     display: flex;
-    align-items: left;
+    
     background-color: var(--primary);
 
     border-radius: 25px;
 
-    padding: 20px;
+    
     min-width: 20%;
     height: 90vh;
     
-    margin-left: 3.25%;
+    margin-left: 1%;
     
 }
 
@@ -170,11 +170,11 @@ h3 {
 .bar-chart {
     display: flex;
     border-radius: 25px;
-    margin-top: -21%;
+    margin-top: -25%;
     align-items: center;
     background-color: #0f131a;
     padding: 1dvh;
-    height: 25% ;
+    height: 22% ;
 
 }
 
@@ -185,7 +185,7 @@ h3 {
     margin-top: 0%;
     flex-direction:row;
     background-color: #0f131a;
-    padding: 0.5dvh;
+    
     
     
 
@@ -200,9 +200,72 @@ h3 {
 
 .CoinButtons button {
     display: flex;
-    background-color: var(--primary);
+    background-color: rgba(255, 0, 0, 0);
+    border-color: rgba(255, 0, 0, 0);
+    color: white;
+    text-align: center;
+    flex-direction: row;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    transition: 500ms;
+    font-size: medium;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow if text is too long */
+    text-overflow: ellipsis; /* Display ellipsis (...) if text is truncated */
+}
+
+.CoinButtons button:hover {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: rgba(255, 0, 0, 0);
+    border-color: rgba(255, 0, 0, 0);
+    font-size: large;
+    color: #32354e;
+    text-align: center;
+    transition: 200ms;
+    color: var(--secondary);
+}
+    
+.leftNav {
+    display: flex;
+    
+    background-color: #171923;
+    width: 30%;
+    border-top-left-radius:  25px;
+    border-bottom-left-radius:  25px;
+}
+
+
+.myinvestments{
+
+    display: flex;
     border-radius: 25px;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    align-items: center;
+    
     flex-direction:column;
+    background-color: #0f131a;
+    padding: 3dvh;
+    
+}
+
+.coinleftnav {
+    display: flex;
+    margin-left: 7%;
+    align-items: center;
+    height: 70vh;
+    background-color: #0f131a;
+    border-radius: 25px;
+    margin-top: 40%;
+    width: 22vh;
+    
+    justify-content: center;
+    
+    
     
     
 }

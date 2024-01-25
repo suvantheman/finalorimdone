@@ -3,7 +3,7 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 import { getMouse } from "../utils/chartMouse.js";
 
-const Y_OFFSET = 331;
+const Y_OFFSET = 238;
 
 const drawLine = (ctx, xStart, xEnd, yStart, yEnd) => {
     ctx.save();

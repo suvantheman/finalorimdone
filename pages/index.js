@@ -67,7 +67,7 @@ export default function Home() {
     useEffect(() => {
         const asyncWrapper = async () => {
             const coinData = (coinName == lastCoinName) ? lastCoinData : await getCoinData(coinName, startRange, endRange);
-            const prices = coinData.map(line => parseInt(line.Close).toFixed(3));
+            const prices = coinData.map(line => line.Close);
             const isPositive = (prices[prices.length - 1] - prices[0]) >= 0;
 
             setCoinState(buildChart(prices, isPositive));

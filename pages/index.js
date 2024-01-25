@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import Table from "@components/Table";
 import Controls from "@components/Controls";
-import coinButtons from "@components/coinButtons.js";
 import LineChart from "@components/LineChart";
 import getCoinData from "../utils/getCoinData.js";
 import chartOptionsConfig from "../utils/configs/chartOptions.js";
-import chartConfig from "../utils/configs/chart.js";
+import buildChart from "../utils/configs/chart.js";
 import { setMouse } from "../utils/chartMouse.js";
 import BarChart from "@components/BarChart.js";
 import baseRanges from "utils/configs/baseRanges.js";
@@ -13,7 +12,7 @@ import { PieChart } from "react-minimal-pie-chart";
 import CoinButtons from "@components/coinButtons.js";
 
 export default function Home() {
-    const [coinName, setCoinName] = useState("BTC");
+    const [coinName, setCoinName] = useState("btc");
 
     const [coinState, setCoinState] = useState({
         labels: ["Loading"],
@@ -34,7 +33,7 @@ export default function Home() {
     const [startRange, setStartRange] = useState(2);
     const [endRange, setEndRange] = useState(0);
 
-    const changeCoinName = event => { 
+    const changeCoinName = event => {
         const value = event.target.getAttribute("value");
 
         setCoinName(value);
@@ -62,13 +61,19 @@ export default function Home() {
         setEndRange(Math.max(endRange - (distance * delta), baseRange - startRange));
     };
 
-    useEffect(() => {
+    var lastCoinName;
+    var lastCoinData;
+
+    useEffect((l) => {
         const asyncWrapper = async () => {
-            const coinData = await getCoinData(coinName, startRange, endRange);
-            const prices = coinData.map((line) => line.Close);
+            const coinData = (coinName == lastCoinName) ? lastCoinData : await getCoinData(coinName, startRange, endRange);
+            const prices = coinData.map(line => parseInt(line.Close).toFixed(3));
             const isPositive = (prices[prices.length - 1] - prices[0]) >= 0;
 
-            setCoinState(chartConfig(prices, isPositive));
+            setCoinState(buildChart(prices, isPositive));
+
+            lastCoinName = coinName;
+            lastCoinData = coinData;
         };
 
         asyncWrapper();
@@ -122,10 +127,10 @@ export default function Home() {
                             valueFormatter={(value, percentage) => `${value} (${percentage}%)`}></PieChart>
                     </div>
                     <div className="myinvestments">
-                        <h3>Investment 1 </h3>
-                        <h3>Investment 2 </h3>
-                        <h3>Investment 3 </h3>
-                        <h3>Investment 4 </h3>
+                        <h3>Investment 1</h3>
+                        <h3>Investment 2</h3>
+                        <h3>Investment 3</h3>
+                        <h3>Investment 4</h3>
                     </div>
                 </div>
             </div >

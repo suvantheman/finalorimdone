@@ -12,8 +12,8 @@ import { PieChart } from "react-minimal-pie-chart";
 import CoinButtons from "@components/coinButtons.js";
 
 export default function Home() {
-    const [coinName, setCoinName] = useState("btc");
-    const [coinDisplayName, setCoinDisplayName] = useState("Bitcoin Price Chart (BTC)");
+    const [coinName, setCoinName] = useState("EMB");
+    const [coinDisplayName, setCoinDisplayName] = useState("Ember Price Chart (EMB)");
 
     const [coinState, setCoinState] = useState({
         labels: ["Loading"],
@@ -87,7 +87,7 @@ export default function Home() {
             <div className="container">
                 <div className="left-UI">
                     <div className="leftNav">
-                        <img src={"../public/assets/craniumLogo.png"} />
+                        
                     </div>
                     <div className="coinleftnav">
                         <CoinButtons changeCoinName={changeCoinName} />
@@ -104,10 +104,18 @@ export default function Home() {
                     </div>
 
                     <div className="graph-info">
+                        
                         <Table data={{
+                            
                             headers: ["24h", "7d", "1m", "1y"],
                             rows: [["0.4%", "-1.4%", "-10.7%", "-7.3%"]]
+
+                            
                         }} />
+                        <div className="invest-sell">
+                        <button onClick={incrementRange} value="-1">Prev</button>
+                <button onClick={incrementRange} value="1">Next</button>
+                </div>
                     </div>
                 </div>
 
@@ -130,10 +138,10 @@ export default function Home() {
                             valueFormatter={(value, percentage) => `${value} (${percentage}%)`}></PieChart>
                     </div>
                     <div className="myinvestments">
-                        <h3>Investment 1</h3>
-                        <h3>Investment 2</h3>
-                        <h3>Investment 3</h3>
-                        <h3>Investment 4</h3>
+                        <h3>Investment test</h3>
+                        <h3>Investment test</h3>
+                        <h3>Investment test</h3>
+                        <h3>Investment test</h3>
                     </div>
                 </div>
             </div >

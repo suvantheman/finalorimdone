@@ -205,8 +205,8 @@ h3 {
     color: white;
     text-align: center;
     flex-direction: row;
-    margin-top: 35px;
-    margin-bottom: 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     transition: 500ms;
     font-size: medium;
     justify-content: center; /* Center horizontally */
@@ -268,4 +268,13 @@ h3 {
     
     
     
+}
+.invest-sell {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 25px;
+   margin-left: 445px;
+
+
 }

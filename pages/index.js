@@ -1,18 +1,20 @@
 import { useState, useEffect, useRef } from "react";
-import Header from "@components/Header";
 import Table from "@components/Table";
-import RadioButton from "@components/RadioButton";
-import RadioGroup from "@components/RadioGroup";
+import Controls from "@components/Controls";
 import LineChart from "@components/LineChart";
 import getCoinData from "../utils/getCoinData.js";
-import chartOptionsConfig from "../utils/chartOptionsConfig.js";
-import chartConfig from "../utils/chartConfig.js";
+import chartOptionsConfig from "../utils/configs/chartOptions.js";
+import buildChart from "../utils/configs/chart.js";
 import { setMouse } from "../utils/chartMouse.js";
 import BarChart from "@components/BarChart.js";
-import PieChart from "@components/PieChart.js";
-import chartOptionsConfigPie from "utils/chartOptionsConfigPie.js";
+import baseRanges from "utils/configs/baseRanges.js";
+import { PieChart } from "react-minimal-pie-chart";
+import CoinButtons from "@components/coinButtons.js";
 
 export default function Home() {
+    const [coinName, setCoinName] = useState("EMB");
+    const [coinDisplayName, setCoinDisplayName] = useState("Ember Price Chart (EMB)");
+
     const [coinState, setCoinState] = useState({
         labels: ["Loading"],
         backgroundColor: "#9BD0F5",
@@ -31,6 +33,14 @@ export default function Home() {
     const [baseRange, setBaseRange] = useState(2);
     const [startRange, setStartRange] = useState(2);
     const [endRange, setEndRange] = useState(0);
+
+    const changeCoinName = event => {
+        const button = event.target; 
+        const value = button.getAttribute("value");
+        
+        setCoinName(value);
+        setCoinDisplayName(`${button.textContent} Price Chart (${value.toUpperCase()})`);
+    }
 
     const changeBaseRange = event => {
         const value = event.target.getAttribute("data-value");
@@ -54,107 +64,87 @@ export default function Home() {
         setEndRange(Math.max(endRange - (distance * delta), baseRange - startRange));
     };
 
+    var lastCoinName;
+    var lastCoinData;
+
     useEffect(() => {
         const asyncWrapper = async () => {
-            const coinData = await getCoinData("BTC", startRange, endRange);
-            const prices = coinData.map((line) => line.Close);
-            const positive = (prices[prices.length - 1] - prices[0]) >= 0;
+            const coinData = (coinName == lastCoinName) ? lastCoinData : await getCoinData(coinName, startRange, endRange);
+            const prices = coinData.map(line => line.Close);
+            const isPositive = (prices[prices.length - 1] - prices[0]) >= 0;
 
-            setCoinState({
-                labels: coinData.map(line => ""),
-                datasets: [{
-                    label: "Price",
-                    pointColor: chartConfig.pointColor,
-                    pointStrokeColor: chartConfig.pointStrokeColor,
-                    borderColor: chartConfig.borderColor[positive],
-                    color: chartConfig.color,
-                    fill: "start",
-                    pointRadius: 0,
-
-                    backgroundColor: canvas => {
-                        const context = canvas.chart.ctx;
-                        const gradient = context.createLinearGradient(0, 0, 0, context.canvas.clientWidth);
-
-                        chartConfig.backgroundColor[positive](gradient);
-
-                        return gradient;
-                    },
-
-                    data: prices
-                }]
-            });
+            setCoinState(buildChart(prices, isPositive));
+            
+            lastCoinName = coinName;
+            lastCoinData = coinData;
         };
 
         asyncWrapper();
-    }, [startRange, endRange]);
+    }, [coinName, startRange, endRange]);
 
     return (
         <>
-            {/* <Header title="Edu-Crypto" />  */}
-
             <div className="container">
-
                 <div className="left-UI">
-
-
+                    <div className="leftNav">
+                        
+                    </div>
+                    <div className="coinleftnav">
+                        <CoinButtons changeCoinName={changeCoinName} />
+                    </div>
                 </div>
 
-
                 <div className="center-UI">
-                    <h3>Bitcoin Price Chart (BTC)</h3>
+                    <h3>{coinDisplayName}</h3>
 
-                    <div className="controls">
-                        <RadioGroup checkedValue="24h">
-                            <RadioButton onClick={changeBaseRange} label="24h" value="2" />
-                            <RadioButton onClick={changeBaseRange} label="7d" value="7" />
-                            <RadioButton onClick={changeBaseRange} label="1m" value="30" />
-                            <RadioButton onClick={changeBaseRange} label="1y" value="365" />
-                        </RadioGroup>
-
-                        <div className="prev-next-buttons">
-                            <button onClick={incrementRange} value="-1">Prev</button>
-                            <button onClick={incrementRange} value="1">Next</button>
-                        </div>
-                    </div>
+                    <Controls changeBaseRange={changeBaseRange} incrementRange={incrementRange} baseRanges={baseRanges} />
 
                     <div className="chart" onMouseMove={setMouse}>
                         <LineChart chartData={coinState} chartOptions={chartOptionsConfig} />
-
                     </div>
-                    <div className="undergraph">
+
+                    <div className="graph-info">
+                        
                         <Table data={{
+                            
                             headers: ["24h", "7d", "1m", "1y"],
                             rows: [["0.4%", "-1.4%", "-10.7%", "-7.3%"]]
 
+                            
                         }} />
-
+                        <div className="invest-sell">
+                        <button onClick={incrementRange} value="-1">Prev</button>
+                <button onClick={incrementRange} value="1">Next</button>
+                </div>
                     </div>
                 </div>
 
+                <div className="right-UI"><div className="bar-chart">
+                    <BarChart chartData={coinState} chartOptions={chartOptionsConfig} />
+                </div>
+                    <h1 className="myportfolio">My Portfolio:</h1>
 
-                <div className="right-UI">
-
-
-
-                    <div className="bar-chart">
-
-                        <BarChart chartData={coinState} chartOptions={chartOptionsConfig} />
-
-
-
+                    <div className="PieChart">
+                        <PieChart
+                            data={[
+                                { title: 'One', value: 10, color: '#E38627' },
+                                { title: 'Two', value: 15, color: '#C13C37' },
+                                { title: 'Three', value: 20, color: '#6A2135' },
+                            ]}
+                            lineWidth={15}
+                            radius={30}
+                            animate
+                            reveal={100}
+                            valueFormatter={(value, percentage) => `${value} (${percentage}%)`}></PieChart>
                     </div>
-
-                    <div className="pie-chart">
-                        <h2> Your Portfolio:</h2>
-
-                        <PieChart chartData={dataPieState} chartOptions={chartOptionsConfigPie} />
-
-                        {/* Right side UI */}
+                    <div className="myinvestments">
+                        <h3>Investment test</h3>
+                        <h3>Investment test</h3>
+                        <h3>Investment test</h3>
+                        <h3>Investment test</h3>
                     </div>
                 </div>
-            </div>
-
-
+            </div >
         </>
     )
 };

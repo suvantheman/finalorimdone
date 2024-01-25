@@ -1,7 +1,9 @@
+import Chart from 'chart.js/auto';
 import React from "react";
 import { Line } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
 import { getMouse } from "../utils/chartMouse.js";
+
+const Y_OFFSET = 238;
 
 const drawLine = (ctx, xStart, xEnd, yStart, yEnd) => {
     ctx.save();
@@ -32,7 +34,7 @@ const plugins = [{
         // Draw horizontal line
         const leftX = chart.scales.x.left;
         const rightX = chart.scales.x.right;
-        drawLine(ctx, leftX, rightX, mouseY - 247, mouseY - 247);
+        drawLine(ctx, leftX, rightX, mouseY - Y_OFFSET, mouseY - Y_OFFSET);
     },
 }];
 
@@ -41,4 +43,3 @@ function LineChart({ chartData, chartOptions }) {
 }
 
 export default LineChart;
-

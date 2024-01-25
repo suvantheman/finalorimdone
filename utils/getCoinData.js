@@ -16,8 +16,11 @@ const processCSV = csv => {
     return lines;
 };
 
+
+
 const getCSVData = async csv => {
     const response = await fetch(`../assets/stock-data/${csv}.txt`);
+
     const data = await response.text();
     const points = processCSV(data);
 

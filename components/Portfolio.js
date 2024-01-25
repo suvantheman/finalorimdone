@@ -7,7 +7,7 @@ export default function ({ dataPieState }) {
         <div className="pie-chart">
             <h2> Your Portfolio:</h2>
 
-            <Pie data={dataPieState}  />
+            <Pie data={dataPieState} />
         </div>
     )
 };

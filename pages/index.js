@@ -13,11 +13,14 @@ import { PieChart } from "react-minimal-pie-chart";
 import CoinButtons from "@components/coinButtons.js";
 
 export default function Home() {
+    const [coinName, setCoinName] = useState("BTC");
+
     const [coinState, setCoinState] = useState({
         labels: ["Loading"],
         backgroundColor: "#9BD0F5",
         datasets: [{}]
     });
+
     const [dataPieState, setDataPieState] = useState({
         labels: ['1 BTC', '5 DOT', '10 ETH'],
         backgroundColor: "#9BD0F5",
@@ -30,6 +33,12 @@ export default function Home() {
     const [baseRange, setBaseRange] = useState(2);
     const [startRange, setStartRange] = useState(2);
     const [endRange, setEndRange] = useState(0);
+
+    const changeCoinName = event => { 
+        const value = event.target.getAttribute("value");
+
+        setCoinName(value);
+    }
 
     const changeBaseRange = event => {
         const value = event.target.getAttribute("data-value");
@@ -55,7 +64,7 @@ export default function Home() {
 
     useEffect(() => {
         const asyncWrapper = async () => {
-            const coinData = await getCoinData("BTC", startRange, endRange);
+            const coinData = await getCoinData(coinName, startRange, endRange);
             const prices = coinData.map((line) => line.Close);
             const isPositive = (prices[prices.length - 1] - prices[0]) >= 0;
 
@@ -63,19 +72,17 @@ export default function Home() {
         };
 
         asyncWrapper();
-    }, [startRange, endRange]);
+    }, [coinName, startRange, endRange]);
 
     return (
         <>
             <div className="container">
                 <div className="left-UI">
                     <div className="leftNav">
-
                         <img src={"../public/assets/craniumLogo.png"} />
-
                     </div>
                     <div className="coinleftnav">
-                    <CoinButtons changeBaseRange={changeBaseRange} incrementRange={incrementRange} baseRanges={baseRanges} />
+                        <CoinButtons changeCoinName={changeCoinName} />
                     </div>
                 </div>
 
@@ -91,8 +98,7 @@ export default function Home() {
                     <div className="graph-info">
                         <Table data={{
                             headers: ["24h", "7d", "1m", "1y"],
-                            rows: [["0.4%", "-1.4%", "-10.7%", "-7.3%"]],
-
+                            rows: [["0.4%", "-1.4%", "-10.7%", "-7.3%"]]
                         }} />
                     </div>
                 </div>
@@ -100,10 +106,7 @@ export default function Home() {
                 <div className="right-UI"><div className="bar-chart">
                     <BarChart chartData={coinState} chartOptions={chartOptionsConfig} />
                 </div>
-                
-                    <h1 className="myportfolio">  My Portfolio:</h1>
-
-                  
+                    <h1 className="myportfolio">My Portfolio:</h1>
 
                     <div className="PieChart">
                         <PieChart
@@ -111,26 +114,19 @@ export default function Home() {
                                 { title: 'One', value: 10, color: '#E38627' },
                                 { title: 'Two', value: 15, color: '#C13C37' },
                                 { title: 'Three', value: 20, color: '#6A2135' },
-
                             ]}
                             lineWidth={15}
                             radius={30}
                             animate
                             reveal={100}
-
-
-
-
                             valueFormatter={(value, percentage) => `${value} (${percentage}%)`}></PieChart>
                     </div>
                     <div className="myinvestments">
-                    <h3>Investment 1 </h3>
-                    <h3>Investment 2 </h3>
-                    <h3>Investment 3 </h3>
-                    <h3>Investment 4 </h3>
-</div>
-
-
+                        <h3>Investment 1 </h3>
+                        <h3>Investment 2 </h3>
+                        <h3>Investment 3 </h3>
+                        <h3>Investment 4 </h3>
+                    </div>
                 </div>
             </div >
         </>
